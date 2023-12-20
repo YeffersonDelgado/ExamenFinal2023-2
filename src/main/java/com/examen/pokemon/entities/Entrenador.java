@@ -1,10 +1,14 @@
 package com.examen.pokemon.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,6 +39,14 @@ public class Entrenador {
 	private Pueblo pueblo;
 
 	private String uuid;
+	
+	@ManyToMany
+	@JoinTable(
+		        name = "entrenador_pokemon",
+		        joinColumns = @JoinColumn(name = "entrenador_id"),
+		        inverseJoinColumns = @JoinColumn(name = "pokemon_id")
+		    )
+	private List<Pokemon> pokemon;
 	
 	
 	

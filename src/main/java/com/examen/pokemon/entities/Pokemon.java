@@ -5,13 +5,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name = "pokemon")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,6 +28,7 @@ public class Pokemon {
     
     
 	@ManyToOne
+	@JoinColumn(name = "tipo_id")
     private Tipo_pokemon tipo_pokemon;
 	
 	private String fecha_descubrimiento;
@@ -35,6 +36,10 @@ public class Pokemon {
 	private Integer generacion;
 	
 	private String uuid;
+	
+	
+	@ManyToMany(mappedBy = "pokemons")
+	private Entrenador entrenador;
 	
 	
 
