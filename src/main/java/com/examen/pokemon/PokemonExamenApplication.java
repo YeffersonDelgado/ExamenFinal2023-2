@@ -8,6 +8,7 @@ public class PokemonExamenApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PokemonExamenApplication.class, args);
+		System.out.println("COMPILA");
 	}
 
 }
