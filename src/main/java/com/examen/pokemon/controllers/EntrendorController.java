@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.examen.pokemon.entities.Entrenador;
 import com.examen.pokemon.entities.Pokemon;
-import com.examen.pokemon.entities.Tipo_pokemon;
 import com.examen.pokemon.repositories.EntrenadorRepository;
 
 

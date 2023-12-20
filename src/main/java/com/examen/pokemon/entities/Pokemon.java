@@ -1,10 +1,13 @@
 package com.examen.pokemon.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -38,8 +41,8 @@ public class Pokemon {
 	private String uuid;
 	
 	
-	@ManyToMany(mappedBy = "pokemons")
-	private Entrenador entrenador;
+	@ManyToMany
+	private List<Entrenador> entrenador;
 	
 	
 
