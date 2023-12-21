@@ -1,6 +1,8 @@
 package com.examen.pokemon.entities;
 
+import java.util.Date;
 import java.util.List;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +24,8 @@ import lombok.NoArgsConstructor;
 public class Pokemon {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name="pokemon_id_seq",allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "pokemon_id_seq")
 	private Integer id;
 	
     private String nombre;
@@ -31,10 +34,10 @@ public class Pokemon {
     
     
 	@ManyToOne
-	@JoinColumn(name = "tipo_id")
-    private Tipo_pokemon tipo_pokemon;
+	@JoinColumn(name = "tipo_pokemon")
+    private TipoPokemon tipoPokemon;
 	
-	private String fecha_descubrimiento;
+	private Date fecha_descubrimiento;
 	
 	private Integer generacion;
 	
@@ -42,6 +45,11 @@ public class Pokemon {
 	
 	
 	@ManyToMany
+	@JoinTable(
+	        name = "captura",
+	        joinColumns = @JoinColumn(name = "pokemon_id"),
+	        inverseJoinColumns = @JoinColumn(name = "entrenador_id")
+	    )
 	private List<Entrenador> entrenador;
 	
 	
